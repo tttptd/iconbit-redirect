@@ -75,7 +75,7 @@
 
         if(location.hostname) {
             for(i = 0, len = hosts.length; i < len; i++) {
-                hostIndex = hosts[i][0].indexOf(location.hostname);
+                hostIndex = hosts[i].indexOf(location.hostname);
                 if(hostIndex !== -1) {
                     redirectHost = redirectTo[i];
                     break;
