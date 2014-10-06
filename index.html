@@ -1,0 +1,104 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <title>iconBIT</title>
+    <meta name="title" content="iconBIT Limited" />
+    <meta name="description" content="iconBIT Limited" />
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="i/touch-icon-iphone.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="i/touch-icon-ipad.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="i/touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="i/touch-icon-ipad-retina.png">
+</head>
+
+<body>
+    <p>Redirecting to <a href="" id="redirect-link"></a> in <span id="timer"></span> seconds...</p>
+
+    <script>
+    (function() {
+        var hostIndex, i, len, hosts, redirectTo, redirectLink, redirectHost, timer, elapsed, interval;
+
+        hosts = [
+            [
+                'iconbit.co.uk',
+                'www.iconbit.co.uk'
+            ],
+            [
+                'iconbit-official.github.io',
+                'iconbit.asia',
+                'www.iconbit.asia',
+                'iconbit.ch',
+                'www.iconbit.ch',
+                'iconbit.cn.com',
+                'www.iconbit.cn.com',
+                'iconbit.com.tw',
+                'www.iconbit.com.tw',
+                'iconbit.cz',
+                'www.iconbit.cz',
+                'iconbit.eu',
+                'www.iconbit.eu',
+                'iconbit.in',
+                'www.iconbit.in',
+                'iconbit.info',
+                'www.iconbit.info',
+                'iconbit.mx',
+                'www.iconbit.mx',
+                'iconbit.net',
+                'www.iconbit.net',
+                'iconbit.org',
+                'www.iconbit.org',
+                'iconbit.tv',
+                'www.iconbit.tv',
+                'iconbit.tw',
+                'www.iconbit.tw',
+                'iconbit.us',
+                'www.iconbit.us',
+                'iconbit.xyz',
+                'www.iconbit.xyz'
+            ]
+        ];
+
+        redirectTo = [
+            'iconbit.de',
+            'www.iconbit.com'
+        ];
+
+        timer = 5000;
+        elapsed = 0;
+
+        redirectLink = document.getElementById('redirect-link');
+
+        if(location.hostname) {
+            for(i = 0, len = hosts.length; i < len; i++) {
+                hostIndex = hosts[i][0].indexOf(location.hostname);
+                if(hostIndex !== -1) {
+                    redirectHost = redirectTo[i];
+                    break;
+                }
+            }
+        }
+
+        redirectHost && (
+            timerFn(),
+            (redirectLink.href = 'http://' + redirectHost + '/'),
+            (redirectLink.innerHTML = redirectHost),
+            (interval = setInterval(timerFn, 1000)),
+            setTimeout(function() {
+                window.location.href = redirectLink.href;
+            }, timer)
+        );
+
+        function timerFn() {
+            var val = timer / 1000 - elapsed++;
+            document.getElementById('timer').innerHTML = val;
+            val || clearInterval(interval);
+        }
+    })();
+    </script>
+</body>
+</html>
